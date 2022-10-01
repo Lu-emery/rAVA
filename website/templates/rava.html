@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} rAVA {% endblock %}
+
+{% block main %}
+
+    <div class="container w-50">
+        <div class="small-box mx-auto text-center w-50">
+            <form method="POST" id="entrada_form">
+                <div class="mb-3">
+                    <label for="entradaUsuario" class="form-label">Sua Pergunta</label>
+                    <input type="text" class="form-control" id="entrada_usuario" name="entrada_usuario" aria-describedby="descricao">
+                    <div id="descricao" class="form-text">Escreva a sua pergunta para o rAVA</div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Perguntar
+                </button>
+            </form>
+        </div>
+        <br/><br/>
+        <div class="container w-100" style="height: 500px">
+            <div class="small-box mx-auto text-center mh-100 overflow-auto">
+                <table class="table">
+                    {% for message in messages %}
+                        {% if message[0] == "usr" %}
+                            <tr class="table-info">
+                                <td>{{message[1]}}</td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td>{{message[1]}}</td>
+                            </tr>
+                            {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
