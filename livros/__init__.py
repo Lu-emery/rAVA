@@ -29,8 +29,8 @@ def checa_se_tem(nome, autor):
     #print(f'testando NOME:{str(nome)} e AUTOR:{str(autor)}')
     
     for livro in livros:
-        if nome.upper() == livro.nome.upper():
-            if autor and autor.upper() == livro.autor.upper():
+        if nome == livro.nome.upper():
+            if autor and autor == livro.autor.upper():
                 return "SIM"
             elif not autor:
                 return "SIM"
@@ -74,8 +74,7 @@ def preco_livro(nome):
     else:
         return f'NAO TEMOS ESSE LIVRO'
             
-            
-    
+
 
 def main():
     import re

@@ -19,10 +19,12 @@ session_id = 1
 
 session_data = kernel.getSessionData(session_id)
 
-kernel.setBotPredicate("name", "Botto")
+kernel.setBotPredicate("name", "rAVA")
 
 def pre_processamento(msg):
     # Essa função vai executar qualquer pré-processamento relevante para a mensagem
+    msg = msg.upper()
+    
     return msg
 
 def dispatcher(msg):
@@ -53,3 +55,29 @@ def run_bot_with_logs(logs):
     
         if (i+1) == len(logs):
             return resp
+        
+def run_bot_terminal():
+    try:
+        while True:
+            entrada_usuario = pre_processamento(input("> "))
+            
+            if entrada_usuario in ["exit", "quit", "sair"]:
+                print("FOI ÓTIMO CONVERSAR COM VOCÊ")
+                break
+            
+            tgt = dispatcher(entrada_usuario)
+            
+            if tgt == 'aiml':
+                print(kernel.respond(entrada_usuario, session_id))
+            elif tgt == 'arit':
+                # resp = aritmetica(entrada_usuario)
+                pass
+            elif tgt == 'logic':
+                # resp = logica(entrada_usuario)
+                pass
+            
+            print("")
+    
+    except KeyboardInterrupt:
+        print("")
+        print("FOI ÓTIMO CONVERSAR COM VOCÊ")

@@ -32,7 +32,7 @@ Para executar o sistema, acessar a pasta rava/ pelo terminal e executar o comand
 
 OS X & Linux
 ```
-./main.py
+python3 main.py
 ```
 
 Windows
@@ -54,6 +54,8 @@ Para resetar a conversa com o bot, basta fechar o browser ou enviar o comando "r
 
 * 0.1
     * MVP do sistema rAVA
+* 0.1.1
+    * Mudança no nome do bot
 
 ## Meta
 
