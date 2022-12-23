@@ -5,11 +5,62 @@
             OI, MEU NOME É <bot name="name" />, QUAL O SEU?
         </template>
     </category>
+
+    <category>        
+        <pattern>OLÁ</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
+
+    <category>        
+        <pattern>BOM DIA</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
+
+    <category>        
+        <pattern>BOA TARDE</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
     
+    <category>        
+        <pattern>BOA NOITE</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
+
+    <category>        
+        <pattern>BOM DIA *</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
+
+    <category>        
+        <pattern>BOA TARDE *</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
+    
+    <category>        
+        <pattern>BOA NOITE *</pattern>
+        <template>
+            <srai>OI</srai>
+        </template>
+    </category>
+
+    
+
     <category>
         <pattern>MEU NOME É *</pattern>
         <template>
-            MUITO PRAZER, <set name="name"><star /></set>
+            MUITO PRAZER, <set name="name"><star /></set>, COM O QUE EU POSSO AJUDAR?
         </template>
     </category>
 
@@ -72,6 +123,8 @@
         </template>
     </category>
 
+
+
     <category>
         <pattern>QUAIS LIVROS TEM</pattern>
         <template>
@@ -94,6 +147,15 @@
     </category>
 
     <category>
+        <pattern>O QUE TEM</pattern>
+        <template>
+            <srai>QUAIS LIVROS TEM</srai>
+        </template>
+    </category>
+    
+
+
+    <category>
         <pattern>QUAIS LIVROS DE * TEM</pattern>
         <template>
             TEMOS O SEGUINTE: <system>powershell python ./livros/__init__.py autor <star/></system>
@@ -114,6 +176,8 @@
         </template>
     </category>
 
+
+
     <category>
         <pattern>TEM *</pattern>
         <template>
@@ -128,6 +192,7 @@
             <srai>TEM <star/></srai>
         </template>
     </category>
+
 
 
     <category>
@@ -149,6 +214,14 @@
 
     <category>
         <pattern>QUANTO TÁ</pattern>
+        <that>TEM *</that>
+        <template>
+            <srai>QUANTO CUSTA</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>QUANTO FICA</pattern>
         <that>TEM *</that>
         <template>
             <srai>QUANTO CUSTA</srai>
@@ -179,6 +252,15 @@
         </template>
     </category>
 
+    <category>
+        <pattern>FICA QUANTO</pattern>
+        <that>TEM *</that>
+        <template>
+            <srai>QUANTO CUSTA</srai>
+        </template>
+    </category>
+
+
 
     <category>
         <pattern>QUANTO CUSTA *</pattern>
@@ -190,6 +272,13 @@
     </category>
 
     <category>
+        <pattern>QUANTO TÁ *</pattern>
+        <template>
+            <srai>QUANTO CUSTA <star/></srai>
+        </template>
+    </category>
+
+    <category>
         <pattern>QUANTO É *</pattern>
         <template>
             <srai>QUANTO CUSTA <star/></srai>
@@ -197,7 +286,7 @@
     </category>
 
     <category>
-        <pattern>QUANTO TÁ *</pattern>
+        <pattern>QUANTO FICA *</pattern>
         <template>
             <srai>QUANTO CUSTA <star/></srai>
         </template>
@@ -224,6 +313,28 @@
         </template>
     </category>
 
+    <category>
+        <pattern>* FICA QUANTO</pattern>
+        <template>
+            <srai>QUANTO CUSTA <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>QUERO COMPRAR *</pattern>
+        <template>
+            <srai>QUANTO CUSTA <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>QUERO *</pattern>
+        <template>
+            <srai>QUANTO CUSTA <star/></srai>
+        </template>
+    </category>
+
+
 
     <category>
         <pattern>PODE SER</pattern>
@@ -243,6 +354,14 @@
 
     <category>
         <pattern>VOU QUERER *</pattern>
+        <that>CUSTA *</that>
+        <template>
+            <srai>PODE SER</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>QUERO COMPRAR</pattern>
         <that>CUSTA *</that>
         <template>
             <srai>PODE SER</srai>

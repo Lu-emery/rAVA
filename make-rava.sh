@@ -18,21 +18,21 @@ else
     rm -fdr micro-rAVA/
     echo "micro-rAVA criado com sucesso"
 
-    echo "Criando full-rAVA"
-    rm -fdr full-rAVA/
-    rm -f full-rAVA.zip
-    mkdir full-rAVA
-    cp rAVA/*.py full-rAVA/
-    cp rAVA/README.md full-rAVA/readme.txt
-    mkdir full-rAVA/bot
-    cp -r rAVA/bot full-rAVA/
-    rm -f full-rAVA/bot/*.brn   
-    mkdir full-rAVA/livros
-    cp -r rAVA/livros full-rAVA/
-    mkdir full-rAVA/website
-    cp -r rAVA/website full-rAVA/
-    rm -fdr full-rAVA/*/__pycache__
-    zip -r full-rAVA full-rAVA
-    rm -fdr full-rAVA/
-    echo "full-rAVA criado com sucesso"
+    echo "Criando macro-rAVA"
+    rm -fdr macro-rAVA/
+    rm -f macro-rAVA.zip
+    mkdir macro-rAVA
+    cp rAVA/*.py macro-rAVA/
+    cp rAVA/README.md macro-rAVA/readme.txt
+    mkdir macro-rAVA/bot
+    cp -r rAVA/bot macro-rAVA/
+    rm -f macro-rAVA/bot/*.brn   
+    mkdir macro-rAVA/livros
+    cp -r rAVA/livros macro-rAVA/
+    mkdir macro-rAVA/website
+    cp -r rAVA/website macro-rAVA/
+    rm -fdr macro-rAVA/*/__pycache__
+    zip -r macro-rAVA macro-rAVA
+    rm -fdr macro-rAVA/
+    echo "macro-rAVA criado com sucesso"
 fi

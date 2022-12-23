@@ -4,7 +4,7 @@
 
 Esse pacote é um MVP (Produto Mínimo Viável) do sistema rAVA, usado como exemplo para teste e apresentação. O sistema foi desenvolvido em Python, usando Flask para a interface web e o add-on Jinja para criar html dinâmico. O bot foi desenvolvido usando o pacote python-aiml, na versão 1.0.1 do aiml.
 
-IMPORTANTE: A versão 0.2 do rAVA não é executável em OSX e Linux
+IMPORTANTE: A versão 0.3 do rAVA não é executável em OSX e Linux
 
 
 ## Instalação
@@ -62,6 +62,8 @@ Para resetar a conversa com o bot, basta fechar o browser ou enviar o comando "r
     * Mudança no nome do bot
 * 0.2
     * Divisão entre micro e full-rAVA
+* 0.3
+    * Criação de logs
 
 ## Meta
 

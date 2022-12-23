@@ -1,14 +1,16 @@
 import aiml
 import os
+import platform
 
 kernel = aiml.Kernel()
 
 def reset_bot():
-    kernel.bootstrap(learnFiles = "bot/std-startup.xml", commands = "INICIAR TESTE")
+    kernel.bootstrap(learnFiles = "bot/std-startup.xml", commands = f"INICIAR TESTE {platform.system().upper()}")
     kernel.saveBrain("bot/cerebro.brn")
 
 if os.path.isfile("bot/cerebro.brn"):
-    kernel.bootstrap(brainFile = "bot/cerebro.brn")
+    #kernel.bootstrap(brainFile = "bot/cerebro.brn")
+    reset_bot()
 else:
     reset_bot()
 
@@ -19,6 +21,12 @@ session_id = 1
 
 session_data = kernel.getSessionData(session_id)
 
+
+print("")
+print("""OLÁ, MEU NOME É rAVA, OBRIGADO POR FAZER PARTE DE NOSSO TESTE. 
+    SE QUISER CONTRIBUIR COM NOSSA BASE DE CONHECIMENTO OFICIAL, 
+    ENVIE ALGUMAS PERGUNTAS PARA https://forms.gle/xKcz1BSJbVam8sJ19
+    AGRADECEMOS A COLABORAÇÃO.""")
 kernel.setBotPredicate("name", "rAVA")
 
 def pre_processamento(msg):
@@ -36,7 +44,13 @@ def dispatcher(msg):
     
     return tgt
 
-def run_bot_with_logs(logs):
+def run_test_from_file(file):
+    f = open(file, mode='r', encoding="utf-8")
+    test_logs = [['usr',l.strip()] for l in f]
+    run_bot_with_logs(test_logs, test_mode=True)
+    f.close()
+
+def run_bot_with_logs(logs, test_mode=False):
     #print("RODANDO BOT COM LOGS: "+str(logs))
     for i, msg in enumerate(logs):
         
@@ -52,23 +66,44 @@ def run_bot_with_logs(logs):
         elif tgt == 'logic':
             # resp = logica(entrada_usuario)
             pass
-    
+            
+        if test_mode:
+            print(f'> {entrada_usuario.lower()}')
+            print(resp)
         if (i+1) == len(logs):
             return resp
-        
+     
+def log(entrada, resposta, arq):
+    arq.write(f'>>> {entrada.lower()}\n')
+    arq.write(resposta.upper()+'\n')
+    arq.write("\n")    
+   
 def run_bot_terminal():
+    n = ""
+    k = 1
+    if os.path.isfile("logs.txt"):
+        while True:
+            k += 1
+            if not os.path.isfile(f'logs{str(k)}.txt'):
+                n = str(k)
+                break
+
+    logs = open(f'logs{n}.txt', "a", encoding='utf-8')
+
     try:
         while True:
             entrada_usuario = pre_processamento(input("> "))
             
-            if entrada_usuario in ["exit", "quit", "sair"]:
+            if entrada_usuario in ["EXIT", "QUIT", "SAIR"]:
                 print("FOI ÓTIMO CONVERSAR COM VOCÊ")
+                log(entrada_usuario, "FOI ÓTIMO CONVERSAR COM VOCÊ", logs)
                 break
             
             tgt = dispatcher(entrada_usuario)
             
             if tgt == 'aiml':
-                print(kernel.respond(entrada_usuario, session_id))
+                resp = kernel.respond(entrada_usuario, session_id)
+                print(resp)
             elif tgt == 'arit':
                 # resp = aritmetica(entrada_usuario)
                 pass
@@ -77,6 +112,8 @@ def run_bot_terminal():
                 pass
             
             print("")
+            
+            log(entrada_usuario, resp, logs)
     
     except KeyboardInterrupt:
         print("")

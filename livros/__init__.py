@@ -1,5 +1,5 @@
 import sys
-import string
+import re
 
 # Abstração do banco de dados de livros
 class Livro():
@@ -64,8 +64,12 @@ def lista_livros_por_autor(autor):
     return saida
 
 def preco_livro(nome):
-    
     #print(f'pegando o preço de: {str(nome)}')
+    
+    entrada = []
+    if re.search(" DE ", nome):
+        entrada = nome.split(" DE ")        
+        nome = entrada[0]
     
     if checa_se_tem(nome, None) == 'SIM':    
         for livro in livros:
@@ -77,8 +81,6 @@ def preco_livro(nome):
 
 
 def main():
-    import re
-
     #print(f'rodando com argv={str(sys.argv)}')
     
     if len(sys.argv) >= 2:
@@ -107,8 +109,8 @@ def main():
             
             #print(f'checando com entrada={str(string_entrada)}')
             entrada = []
-            if re.search(" de ", string_entrada):
-                entrada = string_entrada.split(" de ")        
+            if re.search(" DE ", string_entrada):
+                entrada = string_entrada.split(" DE ")        
                 nome = entrada[0]
                 autor = entrada[1]    
             else:    
@@ -126,8 +128,8 @@ def main():
             
         elif command == 'preco':
             
-            if re.search(" de ", string_entrada):
-                entrada = string_entrada.split(" de ")
+            if re.search(" DE ", string_entrada):
+                entrada = string_entrada.split(" DE ")
             
                 saida = preco_livro(entrada[0])
             

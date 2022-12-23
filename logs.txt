@@ -1,0 +1,12 @@
+>>> oi
+OI, MEU NOME É RAVA, QUAL O SEU?
+
+>>> vocês tem dracula?
+MUITO PRAZER, VOCÊS TEM DRACULA, COM O QUE EU POSSO AJUDAR?
+
+>>> vocês tem dracula?
+ISSO É UMA RESPOSTA GENÉRICA
+
+>>> voces tem dracula?
+DRACULA? TEMOS SIM
+
